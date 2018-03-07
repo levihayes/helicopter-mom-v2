@@ -20,8 +20,8 @@ app = bottle.app()
 @app.post("/start")
 def start():
     return {
-        "name": "Helicopter Mom",
-        "taunt": "Can I see your manager?",
+        "name": "Helicopter Mom v2",
+        "taunt": "I'm not angry, I'm just disappointed.",
         "color": "#F44336",
         "head_type": "tongue",
         "tail_type": "block-bum",
