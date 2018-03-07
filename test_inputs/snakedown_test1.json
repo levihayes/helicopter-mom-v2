@@ -1,0 +1,295 @@
+{
+  "width": 14,
+  "height": 19,
+  "id": 46635,
+  "turn": 2,
+  "snakes": {
+    "data": [
+      {
+        "id": "076f92e8-8702-4b05-b162-0faa33516a0c",
+        "health": 98,
+        "length": 3,
+        "taunt": "\"Can I see your manager?\"",
+        "name": "Helicopter Mom",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 2,
+              "y": 3
+            },
+            {
+              "object": "point",
+              "x": 1,
+              "y": 3
+            },
+            {
+              "object": "point",
+              "x": 0,
+              "y": 3
+            }
+          ],
+          "object": "list"
+        }
+      },
+      {
+        "id": "2d8fe9b9-d467-4c8a-903e-912d87cb8492",
+        "health": 98,
+        "length": 3,
+        "taunt": "\"SSSNK!\"",
+        "name": "sssnk",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 8,
+              "y": 7
+            },
+            {
+              "object": "point",
+              "x": 8,
+              "y": 8
+            },
+            {
+              "object": "point",
+              "x": 9,
+              "y": 8
+            }
+          ],
+          "object": "list"
+        }
+      },
+      {
+        "id": "2f405955-7ed5-41e7-9826-acba363c69e6",
+        "health": 98,
+        "length": 3,
+        "taunt": "\"battlesnake-python!\"",
+        "name": "rossi",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 6,
+              "y": 9
+            },
+            {
+              "object": "point",
+              "x": 5,
+              "y": 9
+            },
+            {
+              "object": "point",
+              "x": 4,
+              "y": 9
+            }
+          ],
+          "object": "list"
+        }
+      },
+      {
+        "id": "0d3fba4d-7f01-460c-95e9-28cd154db839",
+        "health": 98,
+        "length": 3,
+        "taunt": "\"up\"",
+        "name": "Training Snake 9",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 6,
+              "y": 1
+            },
+            {
+              "object": "point",
+              "x": 6,
+              "y": 2
+            },
+            {
+              "object": "point",
+              "x": 6,
+              "y": 3
+            }
+          ],
+          "object": "list"
+        }
+      },
+      {
+        "id": "b36c2a40-5ab0-48cf-b0a7-3cfc8e824324",
+        "health": 100,
+        "length": 4,
+        "taunt": "\"The Sauce is loose!\"",
+        "name": "MrSauce",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 7,
+              "y": 12
+            },
+            {
+              "object": "point",
+              "x": 6,
+              "y": 12
+            },
+            {
+              "object": "point",
+              "x": 5,
+              "y": 12
+            },
+            {
+              "object": "point",
+              "x": 5,
+              "y": 12
+            }
+          ],
+          "object": "list"
+        }
+      },
+      {
+        "id": "e7ac3181-c0c5-4421-a13a-c992a0942bf2",
+        "health": 100,
+        "length": 4,
+        "taunt": "\"Don't make me run, I'm full of Chocolate!\"",
+        "name": "kind of timid uter",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 5,
+              "y": 0
+            },
+            {
+              "object": "point",
+              "x": 4,
+              "y": 0
+            },
+            {
+              "object": "point",
+              "x": 3,
+              "y": 0
+            },
+            {
+              "object": "point",
+              "x": 3,
+              "y": 0
+            }
+          ],
+          "object": "list"
+        }
+      },
+      {
+        "id": "065b07c5-64af-4531-8e11-218c73ab9e1c",
+        "health": 100,
+        "length": 4,
+        "taunt": "\"up\"",
+        "name": "OP BOI",
+        "object": "snake",
+        "body": {
+          "data": [
+            {
+              "object": "point",
+              "x": 12,
+              "y": 5
+            },
+            {
+              "object": "point",
+              "x": 12,
+              "y": 6
+            },
+            {
+              "object": "point",
+              "x": 13,
+              "y": 6
+            },
+            {
+              "object": "point",
+              "x": 13,
+              "y": 6
+            }
+          ],
+          "object": "list"
+        }
+      }
+    ],
+    "object": "list"
+  },
+  "food": {
+    "data": [
+      {
+        "object": "point",
+        "x": 5,
+        "y": 16
+      },
+      {
+        "object": "point",
+        "x": 1,
+        "y": 14
+      },
+      {
+        "object": "point",
+        "x": 7,
+        "y": 16
+      },
+      {
+        "object": "point",
+        "x": 10,
+        "y": 18
+      },
+      {
+        "object": "point",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "object": "point",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "object": "point",
+        "x": 8,
+        "y": 12
+      }
+    ],
+    "object": "list"
+  },
+  "object": "world",
+  "dead_snakes": {
+    "data": [],
+    "object": "list"
+  },
+  "you": {
+    "id": "076f92e8-8702-4b05-b162-0faa33516a0c",
+    "health": 98,
+    "length": 3,
+    "taunt": "\"Can I see your manager?\"",
+    "name": "Helicopter Mom",
+    "object": "snake",
+    "body": {
+      "data": [
+        {
+          "object": "point",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "object": "point",
+          "x": 1,
+          "y": 3
+        },
+        {
+          "object": "point",
+          "x": 0,
+          "y": 3
+        }
+      ],
+      "object": "list"
+    }
+  }
+}
