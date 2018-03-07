@@ -2,6 +2,18 @@ import sys
 from helicoptermom.lib.gameobjects import MAP_SNAKE
 
 
+def check_in_bounds(x, y, arr):
+    """Checks that a given coordinate is in the bounds of 2D array arr."""
+    if x < 0 or y < 0:
+        return False
+    elif y >= arr.shape[0]:
+        return False
+    elif x >= arr.shape[1]:
+        return False
+    else:
+        return True
+
+
 def print_matrix(matrix):
     """Print a 2D matrix to the console."""
     for ylist in matrix:

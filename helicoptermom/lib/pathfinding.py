@@ -22,10 +22,6 @@ def get_next_move(snake_head, path):
 
     snakehead_x, snakehead_y = snake_head
     nextpoint_x, nextpoint_y = path[0]
-    assert type(nextpoint_x) == int, "Invalid X coordinate."
-    assert type(nextpoint_y) == int, "Invalid Y coordinate."
-    assert type(snakehead_x) == int, "Invalid X coordinate."
-    assert type(snakehead_y) == int, "Invalid Y coordinate."
 
     assert snake_head != path[0], "Next coordinate cannot be the same as snake head"
 

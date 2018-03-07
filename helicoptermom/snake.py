@@ -5,10 +5,12 @@ functions and classes I wrote, so good example usage for those interested.
 """
 import bottle
 import logging
+import time
 from bottle import request
 import numpy as np
 
 import helicoptermom.lib.pathfinding as pathfinding
+from helicoptermom.lib.heatmap import make_heatmap
 from helicoptermom.lib.gameobjects import World
 from helicoptermom.lib.utils import neighbors_of
 
@@ -58,19 +60,19 @@ def hungry_mode(world):
     """ Used when we need food. Dijkstra to nearest food. """
     distance, predecessor = pathfinding.dijkstra(world.map, world.you.head)
 
-    nearest_food = None
-    closest_distance = np.inf
-    for fx, fy in world.food:
-        if distance[fy][fx] < closest_distance and pathfinding.is_safe(fx, fy, world, predecessor):
-            closest_distance = distance[fy][fx]
-            nearest_food = (fx, fy)
+    # Create heat map to find desirable areas on board
+    heatmap = make_heatmap(world, world.you)
 
-    if closest_distance == np.inf:
-        # If we can't get to any food, use defense mode
-        return vornoi_defense(world)
-    else:
-        path = pathfinding.find_path_dijkstra(nearest_food[0], nearest_food[1], predecessor)
-        return pathfinding.get_next_move(world.you.head, path)
+    # Mask inaccessible parts of map, get next location
+    hmap_masked = np.ma.masked_array(heatmap, distance == np.inf)
+    next_space_ind = np.argmax(hmap_masked)
+
+    ns_x = next_space_ind % world.width
+    ns_y = int(next_space_ind / world.width)
+
+    # Dijkstra to next space
+    path = pathfinding.find_path_dijkstra(ns_x, ns_y, predecessor)
+    return pathfinding.get_next_move(world.you.head, path)
 
 
 @app.post("/move")
