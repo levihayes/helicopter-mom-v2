@@ -22,7 +22,7 @@ def start():
     return {
         "name": "Helicopter Mom",
         "taunt": "Can I see your manager?",
-        "color": "#03A9F4",
+        "color": "#F44336",
         "head_type": "tongue",
         "tail_type": "block-bum",
         "head_url": "https://s3-us-west-2.amazonaws.com/flx-editorial-wordpress/wp-content/uploads/2016/01/19133540/seinfeld.jpg"
@@ -88,6 +88,11 @@ def move():
     return {
         "move": next_move
     }
+
+
+@app.post("/end")
+def end():
+    return {}
 
 
 if __name__ == "__main__":
