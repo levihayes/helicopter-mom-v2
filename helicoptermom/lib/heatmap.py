@@ -52,11 +52,9 @@ def _mark_zone(map, loc, weight, decay_rate=2):
                        the marks radiate outward.
 
     ex. Weight 4, decay rate 2
-        1 1 1 1 1
-        1 2 2 2 1
-        1 2 4 2 1
-        1 2 2 2 1
-        1 1 1 1 1
+        2 2 2
+        2 4 2
+        2 2 2
     """
     radius = 0
     mark_weight = weight
@@ -75,8 +73,8 @@ def _mark_zone(map, loc, weight, decay_rate=2):
             x_offset += 1
 
         # mark left and right edges
-        y_offset = -radius
-        while y_offset <= radius:
+        y_offset = -radius + 1
+        while y_offset < radius:
 
             if check_in_bounds(loc[0] - radius, loc[1] + y_offset, map):
                 map[loc[1] + y_offset][loc[0] - radius] += mark_weight
