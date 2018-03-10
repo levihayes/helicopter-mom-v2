@@ -39,7 +39,7 @@ def vornoi_defense(world):
     highest_vornoi_area = -1
     highest_scoring_option = None
     for next_point in neighbors_of(world.you.head[0], world.you.head[1], world.map):
-        in_voronoi_zone = voronoi_zone(world, snake_scores, next_point)
+        d, p, in_voronoi_zone = voronoi_zone(world, snake_scores, next_point)
 
         vornoi_area = np.sum(in_voronoi_zone)
         if vornoi_area > highest_vornoi_area:
@@ -51,20 +51,24 @@ def vornoi_defense(world):
 
 def hungry_mode(world):
     """ Used when we need food. Dijkstra to nearest food. """
-    distance, predecessor = pathfinding.dijkstra(world.map, world.you.head)
+
+    # Calculate Voronoi zone
+    enemy_snakes = [snake for snake in world.snakes.values() if snake.id != world.you.id]
+    snake_scores = d_matrices(world, enemy_snakes)
+    snake_d, snake_p, in_voronoi_zone = voronoi_zone(world, snake_scores, world.you.head)
 
     # Create heat map to find desirable areas on board
     heatmap = make_heatmap(world, world.you)
 
-    # Mask inaccessible parts of map, get next location
-    hmap_masked = np.ma.masked_array(heatmap, distance == np.inf)
+    # Get most desirable location in Voronoi zone
+    hmap_masked = np.ma.masked_array(heatmap, in_voronoi_zone)
     next_space_ind = np.argmax(hmap_masked)
 
     ns_x = next_space_ind % world.width
     ns_y = int(next_space_ind / world.width)
 
     # Dijkstra to next space
-    path = pathfinding.find_path_dijkstra(ns_x, ns_y, predecessor)
+    path = pathfinding.find_path_dijkstra(ns_x, ns_y, snake_p)
     return pathfinding.get_next_move(world.you.head, path)
 
 

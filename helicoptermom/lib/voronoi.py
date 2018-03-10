@@ -30,7 +30,7 @@ def voronoi_zone(world, d_matrices, snake_head):
                       the snake referred to by snake_head.
     :param snake_head Point to calculate voronoi zone for.
 
-    :return Voronoi zone as an np.array of booleans
+    :return Dijkstra scores for snake, Voronoi zone as an np.array of booleans
     """
     snake_d, snake_p = dijkstra(world.map, snake_head)
     in_vornoi_zone = np.full((world.height, world.width), True, dtype=np.bool)
@@ -39,4 +39,4 @@ def voronoi_zone(world, d_matrices, snake_head):
     for val in d_matrices.values():
         in_vornoi_zone = np.logical_and(in_vornoi_zone, val - snake_d > 0)
 
-    return in_vornoi_zone
+    return snake_d, snake_p, in_vornoi_zone
