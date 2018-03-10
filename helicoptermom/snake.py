@@ -13,6 +13,7 @@ import helicoptermom.lib.pathfinding as pathfinding
 from helicoptermom.lib.heatmap import make_heatmap
 from helicoptermom.lib.gameobjects import World
 from helicoptermom.lib.utils import neighbors_of
+from helicoptermom.lib.voronoi import d_matrices, voronoi_zone
 
 app = bottle.app()
 
@@ -31,24 +32,16 @@ def start():
 
 def vornoi_defense(world):
     # Calculate d matrices for every snake
-    d_matrices = {}
     enemy_snakes = [snake for snake in world.snakes.values() if snake.id != world.you.id]
-    for snake in enemy_snakes:
-        d_matrix = pathfinding.dijkstra(world.map, snake.head)
-        d_matrices.update({snake.id: d_matrix})
+    snake_scores = d_matrices(world, enemy_snakes)
 
     # For each option, simulate snake move and calculate Vornoi zones
     highest_vornoi_area = -1
     highest_scoring_option = None
     for next_point in neighbors_of(world.you.head[0], world.you.head[1], world.map):
-        np_scores, predecessor = pathfinding.dijkstra(world.map, next_point)
-        in_vornoi_zone = np.full((world.height, world.width), True, dtype=np.bool)
+        in_voronoi_zone = voronoi_zone(world, snake_scores, next_point)
 
-        # Get all points in your Vornoi zone
-        for val in d_matrices.values():
-            in_vornoi_zone = np.logical_and(in_vornoi_zone, val - np_scores > 0)
-
-        vornoi_area = np.sum(in_vornoi_zone)
+        vornoi_area = np.sum(in_voronoi_zone)
         if vornoi_area > highest_vornoi_area:
             highest_vornoi_area = vornoi_area
             highest_scoring_option = next_point
